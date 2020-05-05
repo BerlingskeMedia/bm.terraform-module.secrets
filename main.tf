@@ -29,6 +29,7 @@ module "kms_key" {
   alias                   = "alias/${local.path}"
   tags                    = var.tags
   enabled                 = var.enabled && var.kms_encrypt
+  attributes              = var.attributes
 }
 
 

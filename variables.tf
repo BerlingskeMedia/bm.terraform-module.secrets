@@ -71,3 +71,10 @@ variable "labeled_path" {
   description = "Defines whether create path following this pattern: /[namespace]/[stage]/[name], setting to true will ignore 'path' parameter"
   default     = false
 }
+
+variable "attributes" {
+  type        = list(string)
+  description = "Additional attributes (_e.g._ \"1\")"
+  default     = []
+  #sane default
+}
