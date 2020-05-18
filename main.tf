@@ -28,7 +28,7 @@ module "kms_key" {
   enable_key_rotation     = true
   alias                   = "alias/${local.path}"
   tags                    = var.tags
-  enabled                 = var.enabled && var.kms_encrypt
+  enabled                 = var.kms_encrypt
   attributes              = var.attributes
 }
 
