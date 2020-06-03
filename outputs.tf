@@ -13,6 +13,10 @@ output "ssm_arn" {
   value = aws_ssm_parameter.parameter.*.arn
 }
 
+output "ssm_name" {
+  value = aws_ssm_parameter.parameter.*.name
+}
+
 # DEPRECATED:
 output "kms_arn" {
   value = var.enabled && var.kms_encrypt ? [module.kms_key.key_arn] : []
