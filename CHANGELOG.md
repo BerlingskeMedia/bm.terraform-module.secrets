@@ -1,4 +1,8 @@
 ---
+# 0.2.0
+## Main changes
+    - Update modules for Terraform 0.13 support
+
 # 0.1.1
 ## Main changes
     - output `kms_arn` depends only on `var.kms_encrypt`
