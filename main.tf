@@ -19,7 +19,7 @@ locals {
 # Module creates KMS key and generates random password, encrypted and stored in SSM Parameter Store.
 
 module "kms_key" {
-  source                  = "git::https://github.com/cloudposse/terraform-aws-kms-key.git?ref=tags/0.8.0"
+  source                  = "git::https://github.com/cloudposse/terraform-aws-kms-key.git?ref=tags/0.7.0"
   enabled                 = var.kms_encrypt && ! var.external_kms_enabled ? true : false
   namespace               = var.namespace
   stage                   = var.stage
