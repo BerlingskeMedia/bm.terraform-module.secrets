@@ -6,7 +6,7 @@ resource "random_password" "password" {
   override_special = "_%@"
   # won't change until kms-key-arn won't change
   keepers = {
-    key_arn = var.kms_encrypt && ! var.external_kms_enabled ? module.kms_key.key_arn : var.kms_key
+    key_arn = var.kms_encrypt ? var.external_kms_enabled ? var.kms_key : module.kms_key.key_arn : null
   }
 }
 
