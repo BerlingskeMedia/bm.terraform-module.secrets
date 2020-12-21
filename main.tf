@@ -6,7 +6,7 @@ resource "random_password" "password" {
   override_special = "_%@"
   # won't change until kms-key-arn won't change
   keepers = {
-    key_arn = module.kms_key.key_arn
+    key_arn = var.kms_encrypt && ! var.external_kms_enabled ? module.kms_key.key_arn : var.kms_key
   }
 }
 
@@ -19,7 +19,8 @@ locals {
 # Module creates KMS key and generates random password, encrypted and stored in SSM Parameter Store.
 
 module "kms_key" {
-  source                  = "git::https://github.com/cloudposse/terraform-aws-kms-key.git?ref=tags/0.7.0"
+  source                  = "git::https://github.com/cloudposse/terraform-aws-kms-key.git?ref=tags/0.8.0"
+  enabled                 = var.kms_encrypt && ! var.external_kms_enabled ? true : false
   namespace               = var.namespace
   stage                   = var.stage
   name                    = var.name
@@ -28,11 +29,8 @@ module "kms_key" {
   enable_key_rotation     = true
   alias                   = "alias/${local.path}"
   tags                    = var.tags
-  enabled                 = var.kms_encrypt
   attributes              = var.attributes
 }
-
-
 
 # store encrypted password in ssm
 resource "aws_ssm_parameter" "parameter" {
@@ -41,6 +39,6 @@ resource "aws_ssm_parameter" "parameter" {
   description = var.description
   type        = var.parameter_type
   value       = local.value
-  key_id      = var.kms_encrypt ? module.kms_key.key_id : null
+  key_id      = var.kms_encrypt ? var.external_kms_enabled && var.kms_key != "" ? var.kms_key : module.kms_key.key_id : null
   tags        = var.tags
 }

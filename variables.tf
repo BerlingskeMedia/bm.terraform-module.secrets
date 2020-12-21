@@ -36,6 +36,18 @@ variable "kms_encrypt" {
   default     = false
 }
 
+variable "external_kms_enabled" {
+  type        = bool
+  description = "Should use KMS key for encryption"
+  default     = false
+}
+
+variable "kms_key" {
+  type        = string
+  description = "KMS key ARN used for encryption secret"
+  default     = ""
+}
+
 variable "generate_secret" {
   type        = bool
   description = "Should generate random string and store in parameter store? Will ignore value input"
