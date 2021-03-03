@@ -1,4 +1,9 @@
 ---
+# 0.4.0
+# Main Changes
+    - Set aws provider version to 3
+    - upgrade submodules versions
+
 # 0.3.0
 # Main Changes
     - Add support for external KMS key for encryption
