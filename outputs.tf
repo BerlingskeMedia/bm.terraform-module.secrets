@@ -19,7 +19,7 @@ output "ssm_name" {
 
 # DEPRECATED:
 output "kms_arn" {
-  value = var.enabled && var.kms_encrypt ? [module.kms_key.key_arn] : []
+  value       = var.enabled && var.kms_encrypt ? [module.kms_key.key_arn] : []
   description = "DEPRECATED!"
 }
 
