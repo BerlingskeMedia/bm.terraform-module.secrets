@@ -1,15 +1,20 @@
 ---
+# 0.5.0
+## Main Changes
+    - upgrade module cloudposse/terraform-aws-kms-key to v0.10.0
+    - providers no longer stick to fixed major version
+
 # 0.4.0
-# Main Changes
+## Main Changes
     - Set aws provider version to 3
     - upgrade submodules versions
 
 # 0.3.0
-# Main Changes
+## Main Changes
     - Add support for external KMS key for encryption
 
 # 0.2.0
-# Main Changes
+## Main Changes
     - Terraform v0.13.x support
 
 # 0.1.1
